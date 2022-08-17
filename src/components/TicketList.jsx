@@ -3,10 +3,20 @@ import "../css/ticket-list.css"
 
 import TicketItem from "./TicketItem";
 
-const TicketList = () => {
-    return(
+const TicketList = ({ tickets }) => {
+    return (
         <ul className={ticketList()}>
-            <TicketItem />
+            {
+                tickets.map((item,id) => {
+                    return <TicketItem
+                        key={id}
+                        price={item.price}
+                        iata={item.carrier}
+                        segments={item.segments}
+                        // back={item.segments[1]}
+                    />
+                })
+            }
         </ul>
     )
 }
