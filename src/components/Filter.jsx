@@ -2,7 +2,7 @@ import { filter } from "../utils/bem";
 import "../css/filter.css"
 
 const Filter = (props) => {
-    return(
+    return (
         <aside className={filter()}>
             <p className={filter('text')}>Количество пересадок</p>
             {props.children}

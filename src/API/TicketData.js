@@ -1,19 +1,20 @@
 export default class TicketData {
     static async getSearchId() {
-        const response = await fetch(`https://front-test.dev.aviasales.ru/search`);
-        const search = await response.json();
-        return search.searchId;
+        try {
+            const response = await fetch(`https://front-test.dev.aviasales.ru/search`);
+            const search = await response.json();
+            return search.searchId;
+        } catch (err) {
+            console.log(err.message);
+        }
     }
     static async getDataTickets(searchId) {
-        const response = await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${searchId}`);
-        const data = await response.json();
-        // console.log(data);
-        return data.tickets;
-    }
-    static async getDataStop(searchId) {
-        const response = await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${searchId}`);
-        const data = await response.json();
-        // console.log(data);
-        return data.stop;
+        try {
+            const response = await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${searchId}`);
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 }

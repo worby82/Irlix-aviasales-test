@@ -1,9 +1,9 @@
 import { buttonLoading } from "../utils/bem";
 import "../css/button-loading.css"
 
-const ButtonLoading = () => {
+const ButtonLoading = ({ setTicketCount }) => {
     return (
-        <button className={buttonLoading()}>Показать еще 5 билетов!</button>
+        <button className={buttonLoading()} onClick={() => setTicketCount(prev => prev + 5)}>Показать еще 5 билетов!</button>
     );
 }
 

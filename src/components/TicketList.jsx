@@ -7,13 +7,12 @@ const TicketList = ({ tickets }) => {
     return (
         <ul className={ticketList()}>
             {
-                tickets.map((item,id) => {
+                tickets.map((item, id) => {
                     return <TicketItem
                         key={id}
                         price={item.price}
                         iata={item.carrier}
                         segments={item.segments}
-                        // back={item.segments[1]}
                     />
                 })
             }
