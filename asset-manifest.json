@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/irlix-aviasales-test/static/css/main.cdf511ce.css",
-    "main.js": "/irlix-aviasales-test/static/js/main.e82bd2ed.js",
+    "main.js": "/irlix-aviasales-test/static/js/main.a7c2872c.js",
     "static/media/OpenSans-Regular.woff": "/irlix-aviasales-test/static/media/OpenSans-Regular.ab4f6c76f07d0b69c04a.woff",
     "static/media/OpenSans-SemiBold.woff": "/irlix-aviasales-test/static/media/OpenSans-SemiBold.a3652b52c8f58f832c2c.woff",
     "static/media/OpenSans-SemiBold.woff2": "/irlix-aviasales-test/static/media/OpenSans-SemiBold.7a744a52d45323fb2e17.woff2",
@@ -9,10 +9,10 @@
     "static/media/Logo.svg": "/irlix-aviasales-test/static/media/Logo.472c04511e4ad43b5d411bb650acb7a9.svg",
     "index.html": "/irlix-aviasales-test/index.html",
     "main.cdf511ce.css.map": "/irlix-aviasales-test/static/css/main.cdf511ce.css.map",
-    "main.e82bd2ed.js.map": "/irlix-aviasales-test/static/js/main.e82bd2ed.js.map"
+    "main.a7c2872c.js.map": "/irlix-aviasales-test/static/js/main.a7c2872c.js.map"
   },
   "entrypoints": [
     "static/css/main.cdf511ce.css",
-    "static/js/main.e82bd2ed.js"
+    "static/js/main.a7c2872c.js"
   ]
 }
