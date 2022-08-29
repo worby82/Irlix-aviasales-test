@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import ButtonLoading from "./components/ButtonLoading";
 import Filter from "./components/Filter";
@@ -32,16 +32,61 @@ function App() {
   useEffect(() => {
     if (searchId !== null) {
       if (stop !== true) {
-        TicketData.getDataTickets(searchId).then(data => {
-          setTickets([...tickets, ...data.tickets])
-          setStop(data.stop)
-        });
+        TicketData.getDataTickets(searchId)
+          .then(data => {
+            setTickets([...tickets, ...data.tickets]);
+            setStop(data.stop);
+          })
+          .catch(() => setTickets([...tickets, ...[]]));
       } else {
-        filter();
+        // filter();
         sorting(activeTab);
       }
     }
   }, [searchId, stop, tickets, ticketCount, filterValue])
+
+  const changeFilter = (value) => {
+    if (!filterValue.includes(value)) {
+      setFilterValue([...filterValue, value]);
+    } else {
+      const copyFilterValue = [...filterValue];
+      copyFilterValue.splice(copyFilterValue.indexOf(value), 1)
+      setFilterValue(copyFilterValue);
+    }
+  }
+
+  // const filter = () => {
+  //   if (filterValue.includes('all') === false & filterValue.length > 0) {
+  //     setFilterTickets([...tickets.filter(itemFilter =>
+  //       filterValue.includes(String(itemFilter.segments[0].stops.length))
+  //       & filterValue.includes(String(itemFilter.segments[1].stops.length))
+  //     )])
+  //   } else {
+  //     setFilterTickets([...tickets]);
+  //   }
+  //   // console.log(filterTickets);
+  // }
+
+  useMemo(() => {
+    if (filterValue.includes('all') === false & filterValue.length > 0) {
+          setFilterTickets([...tickets.filter(itemFilter =>
+            filterValue.includes(String(itemFilter.segments[0].stops.length))
+            & filterValue.includes(String(itemFilter.segments[1].stops.length))
+          )])
+        } else {
+          setFilterTickets([...tickets]);
+        }
+  }, [filterValue]);
+
+  const sorting = (value) => {
+    setActiveTab(value);
+    if (filterValue.includes('all') || filterValue.length === 0) {
+      setSortedTickets([...tickets].sort(getSortedFunction(value)).slice(0, ticketCount));
+    } else {
+      setSortedTickets([...filterTickets].sort(getSortedFunction(value)).slice(0, ticketCount));
+    }
+    console.log(filterTickets);
+  }
 
   const getSortedFunction = (value) => {
     switch (value) {
@@ -58,36 +103,6 @@ function App() {
     }
   }
 
-  const filter = () => {
-    if (filterValue.includes('all') === false & filterValue.length > 0) {
-      setFilterTickets([...tickets.filter(itemFilter =>
-        filterValue.includes(String(itemFilter.segments[0].stops.length))
-        & filterValue.includes(String(itemFilter.segments[1].stops.length))
-      )])
-    } else {
-      setFilterTickets([...tickets]);
-    }
-  }
-
-  const sorting = (value) => {
-    setActiveTab(value);
-    if (filterValue.includes('all') || filterValue.length === 0) {
-      setSortedTickets([...tickets].sort(getSortedFunction(value)).slice(0, ticketCount));
-    } else {
-      setSortedTickets([...filterTickets].sort(getSortedFunction(value)).slice(0, ticketCount));
-    }
-  }
-
-  const changeFilter = (value) => {
-    if (!filterValue.includes(value)) {
-      setFilterValue([...filterValue, value]);
-    } else {
-      const copyFilterValue = [...filterValue];
-      copyFilterValue.splice(copyFilterValue.indexOf(value), 1)
-      setFilterValue(copyFilterValue);
-    }
-  }
-
   return (
     <>
       <Header />
@@ -99,7 +114,7 @@ function App() {
           <TabList activeTab={activeTab} sorting={sorting} />
           {
             sortedTickets.length === 0
-              ? <p>Загрузка</p>
+              ? <p><center>Загрузка</center></p>
               : <>
                 <TicketList tickets={sortedTickets} />
                 <ButtonLoading setTicketCount={setTicketCount} />
