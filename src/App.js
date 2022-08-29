@@ -85,7 +85,7 @@ function App() {
     } else {
       setSortedTickets([...filterTickets].sort(getSortedFunction(value)).slice(0, ticketCount));
     }
-    console.log(filterTickets);
+    // console.log(filterTickets);
   }
 
   const getSortedFunction = (value) => {
