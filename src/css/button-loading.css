@@ -13,4 +13,12 @@
     color: #FFFFFF;
     border: none;
     padding: 15px 20px;
+    transition: all .4s;
+}
+
+.button-loading:hover {
+    cursor: pointer;
+    background: #fff;
+    color: #2196F3;
+    transition: all .4s;
 }

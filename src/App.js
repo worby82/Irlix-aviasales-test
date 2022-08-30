@@ -39,7 +39,6 @@ function App() {
           })
           .catch(() => setTickets([...tickets, ...[]]));
       } else {
-        // filter();
         sorting(activeTab);
       }
     }
@@ -54,18 +53,6 @@ function App() {
       setFilterValue(copyFilterValue);
     }
   }
-
-  // const filter = () => {
-  //   if (filterValue.includes('all') === false & filterValue.length > 0) {
-  //     setFilterTickets([...tickets.filter(itemFilter =>
-  //       filterValue.includes(String(itemFilter.segments[0].stops.length))
-  //       & filterValue.includes(String(itemFilter.segments[1].stops.length))
-  //     )])
-  //   } else {
-  //     setFilterTickets([...tickets]);
-  //   }
-  //   // console.log(filterTickets);
-  // }
 
   useMemo(() => {
     if (filterValue.includes('all') === false & filterValue.length > 0) {
@@ -85,7 +72,6 @@ function App() {
     } else {
       setSortedTickets([...filterTickets].sort(getSortedFunction(value)).slice(0, ticketCount));
     }
-    // console.log(filterTickets);
   }
 
   const getSortedFunction = (value) => {

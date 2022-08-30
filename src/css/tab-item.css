@@ -15,6 +15,7 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: #4A4A4A;
+    transition: all .4s;
 }
 .tab-item:first-child {
     border-left: 1px solid #DFE5EC;
@@ -29,4 +30,9 @@
     background-color: #2196F3;
     color: #fff;
     border-color: #2196F3;
+}
+.tab-item:hover:not(.tab-item--active) {
+    background: #F1FCFF;
+    cursor: pointer;
+    transition: all .4s;
 }

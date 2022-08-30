@@ -10,11 +10,13 @@
     line-height: 20px;
     color: #4A4A4A;
     vertical-align: middle;
+    transition: all .4s;
 }
 
 .checkbox:hover {
     background: #F1FCFF;
     cursor: pointer;
+    transition: all .4s;
 }
 
 .checkbox__input {
