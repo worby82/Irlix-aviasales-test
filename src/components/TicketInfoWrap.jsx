@@ -30,7 +30,7 @@ const TicketInfoWrap = ({ segment }) => {
             transfersCount = '3 пересадки';
             break;
         default:
-            transfersCount = 'без пересадок';
+            transfersCount = 'Без пересадок';
     }
 
     return (

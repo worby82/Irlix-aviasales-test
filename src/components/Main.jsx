@@ -1,7 +1,7 @@
+import Container from "./Container";
+
 import { main } from "../utils/bem";
 import "../css/main.css"
-
-import Container from "./Container";
 
 const Main = (props) => {
     return (

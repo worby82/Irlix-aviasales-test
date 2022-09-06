@@ -1,9 +1,13 @@
-import { tabList } from "../utils/bem";
-import "../css/tab-list.css"
+import { useState } from "react";
 
 import TabItem from "./TabItem"
 
-const TabList = ({ activeTab, sorting }) => {
+import { tabList } from "../utils/bem";
+import "../css/tab-list.css"
+
+const TabList = ({ ticketCount, tickets, setSortedTickets }) => {
+    const [activeTab, setActiveTab] = useState('minPrice');
+
     const tabArray = [
         { name: 'Самый дешевый', value: 'minPrice' },
         { name: 'Самый быстрый', value: 'fast' },
@@ -16,10 +20,14 @@ const TabList = ({ activeTab, sorting }) => {
                 tabArray.map(item => {
                     return <TabItem
                         key={item.value}
-                        classes={item.value === activeTab}
-                        sorting={sorting}
                         value={item.value}
                         name={item.name}
+
+                        ticketCount={ticketCount}
+                        tickets={tickets}
+                        setSortedTickets={setSortedTickets}
+                        activeTab={activeTab}
+                        setActiveTab={setActiveTab}
                     />
                 })
             }
