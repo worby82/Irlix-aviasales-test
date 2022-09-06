@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import Checkbox from "./Checkbox";
 
 import { filterItem } from "../utils/bem";
 import "../css/filter-item.css"
 
-const FilterItem = ({ value, text, tickets, setFilterTickets, stop }) => {
-    const [filterValue, setFilterValue] = useState([]);
+const FilterItem = ({ value, text, tickets, setFilterTickets, stop, filterValue, setFilterValue }) => {
 
     useEffect(() => {
         if (stop === true) {
