@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadSearchID, loadTickets } from "./store/actions";
 
 import ButtonLoading from "./components/ButtonLoading";
 import Filter from "./components/Filter";
@@ -9,33 +11,26 @@ import Section from "./components/Section";
 import TabList from "./components/TabList";
 import TicketList from "./components/TicketList";
 
-import TicketData from "./API/TicketData";
 
 function App() {
-  const [ticketCount, setTicketCount] = useState(5);
+  const dispatch = useDispatch();
 
-  const [searchId, setSearchId] = useState(null);
-  const [stop, setStop] = useState(null);
+  const searchId = useSelector(state => state.searchId)
+  const stop = useSelector(state => state.stop)
+  const tickets = useSelector(state => state.tickets)
 
-  const [tickets, setTickets] = useState([]);
-  const [filterTickets, setFilterTickets] = useState([]);
-  const [sortedTickets, setSortedTickets] = useState([]);
+  const sortedTickets = useSelector(state => state.sortedTickets)
 
   useEffect(() => {
     if (searchId === null) {
-      TicketData.getSearchId().then(searchId => setSearchId(searchId));
+      dispatch(loadSearchID());
     }
   }, [])
 
   useEffect(() => {
     if (searchId !== null) {
       if (stop !== true) {
-        TicketData.getDataTickets(searchId)
-          .then(data => {
-            setTickets([...tickets, ...data.tickets]);
-            setStop(data.stop);
-          })
-          .catch(() => setTickets([...tickets, ...[]]));
+        dispatch(loadTickets(searchId));
       }
     }
   }, [searchId, stop, tickets])
@@ -45,24 +40,16 @@ function App() {
       <Header />
       <Main>
         <Filter>
-          <FilterList
-            tickets={tickets}
-            setFilterTickets={setFilterTickets}
-            stop={stop}
-          />
+          <FilterList tickets={tickets} stop={stop} />
         </Filter>
         <Section>
-          <TabList
-            ticketCount={ticketCount}
-            tickets={filterTickets}
-            setSortedTickets={setSortedTickets}
-          />
+          <TabList />
           {
             sortedTickets.length === 0
               ? <center>Загрузка</center>
               : <>
                 <TicketList tickets={sortedTickets} />
-                <ButtonLoading setTicketCount={setTicketCount} />
+                <ButtonLoading />
               </>
           }
         </Section>

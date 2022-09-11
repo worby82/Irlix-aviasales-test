@@ -1,0 +1,11 @@
+export const INCREASE_TICKET_COUNT = 'INCREASE_TICKET_COUNT';
+
+export const CHANGE_ACTIVE_TAB = 'CHANGE_ACTIVE_TAB';
+export const SORT_TICKETS = 'SORT_TICKETS';
+
+export const CHANGE_FILTER = 'CHANGE_FILTER';
+export const FILTER_TICKETS = 'FILTER_TICKETS';
+
+export const LOAD_SEARCH_ID = 'LOAD_SEARCH_ID';
+export const LOAD_STOP = 'LOAD_STOP';
+export const LOAD_TICKETS = 'LOAD_TICKETS';

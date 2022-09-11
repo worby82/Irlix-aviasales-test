@@ -1,9 +1,14 @@
+import { useDispatch } from "react-redux";
+import { increaseTicketCount } from "../store/actions";
+
 import { buttonLoading } from "../utils/bem";
 import "../css/button-loading.css"
 
-const ButtonLoading = ({ setTicketCount }) => {
+const ButtonLoading = () => {
+    const dispatch = useDispatch();
+
     return (
-        <button className={buttonLoading()} onClick={() => setTicketCount(prev => prev + 5)}>Показать еще 5 билетов!</button>
+        <button className={buttonLoading()} onClick={() => dispatch(increaseTicketCount())}>Показать еще 5 билетов!</button>
     );
 }
 

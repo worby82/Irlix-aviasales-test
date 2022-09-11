@@ -1,12 +1,9 @@
-import { useState } from "react";
-
 import TabItem from "./TabItem"
 
 import { tabList } from "../utils/bem";
 import "../css/tab-list.css"
 
-const TabList = ({ ticketCount, tickets, setSortedTickets }) => {
-    const [activeTab, setActiveTab] = useState('minPrice');
+const TabList = () => {
 
     const tabArray = [
         { name: 'Самый дешевый', value: 'minPrice' },
@@ -22,12 +19,6 @@ const TabList = ({ ticketCount, tickets, setSortedTickets }) => {
                         key={item.value}
                         value={item.value}
                         name={item.name}
-
-                        ticketCount={ticketCount}
-                        tickets={tickets}
-                        setSortedTickets={setSortedTickets}
-                        activeTab={activeTab}
-                        setActiveTab={setActiveTab}
                     />
                 })
             }

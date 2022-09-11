@@ -1,35 +1,29 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeActiveTab, sortTickets } from "../store/actions";
 
 import { tabItem } from "../utils/bem";
 import "../css/tab-item.css"
 
-const TabItem = ({ name, value, ticketCount, tickets, setSortedTickets, activeTab, setActiveTab }) => {
+const TabItem = ({ name, value }) => {
+
+    const ticketCount = useSelector(state => state.ticketCount);
+    const activeTab = useSelector(state => state.activeTab);
+    const tickets = useSelector(state => state.filterTickets);
+
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        sorting(activeTab);
-    }, [ticketCount, tickets])
+        dispatch(sortTickets({ tickets, activeTab, ticketCount }));
+    }, [ticketCount, tickets, activeTab])
 
-    const sorting = (value) => {
-        setActiveTab(value);
-        setSortedTickets([...tickets].sort(getSortedFunction(value)).slice(0, ticketCount));
+    const handleSort = (value) => {
+        dispatch(changeActiveTab(value));
     }
 
-    const getSortedFunction = (value) => {
-        switch (value) {
-            case 'fast':
-                return (prev, next) => {
-                    return (prev.segments[0].duration + prev.segments[1].duration) - (next.segments[0].duration + next.segments[1].duration);
-                };
-            case 'optimal':
-                return (prev, next) => {
-                    return (prev.segments[0].duration + prev.segments[1].duration) - (next.segments[0].duration + next.segments[1].duration) & prev.price - next.price;
-                };
-            default:
-                return (prev, next) => prev.price - next.price;
-        }
-    }
 
     return (
-        <button className={tabItem({ active: value === activeTab })} key={value} onClick={() => sorting(value)}>{name}</button>
+        <button className={tabItem({ active: value === activeTab })} key={value} onClick={() => handleSort(value)}>{name}</button>
     )
 }
 
