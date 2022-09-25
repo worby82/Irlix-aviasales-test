@@ -11,6 +11,9 @@ import Section from "./components/Section";
 import TabList from "./components/TabList";
 import TicketList from "./components/TicketList";
 
+import { load } from "./utils/bem";
+import './css/load.css'
+
 
 function App() {
   const dispatch = useDispatch();
@@ -46,7 +49,7 @@ function App() {
           <TabList />
           {
             sortedTickets.length === 0
-              ? <center>Загрузка</center>
+              ? <p className={load()}>Загрузка</p>
               : <>
                 <TicketList tickets={sortedTickets} />
                 <ButtonLoading />

@@ -1,9 +1,10 @@
 import TicketData from '../../API/TicketData';
 import { CHANGE_ACTIVE_TAB, CHANGE_FILTER, FILTER_TICKETS, INCREASE_TICKET_COUNT, LOAD_SEARCH_ID, LOAD_STOP, LOAD_TICKETS, SORT_TICKETS } from '../actionTypes';
 
-export function increaseTicketCount() {
+export function increaseTicketCount(payload) {
     return {
-        type: INCREASE_TICKET_COUNT
+        type: INCREASE_TICKET_COUNT,
+        payload
     }
 }
 

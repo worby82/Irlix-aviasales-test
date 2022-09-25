@@ -16,3 +16,4 @@ export const ticketInfo = cn('ticket-info');
 export const ticketItem = cn('ticket-item');
 export const ticketList = cn('ticket-list');
 export const checkbox = cn('checkbox');
+export const load = cn('load');

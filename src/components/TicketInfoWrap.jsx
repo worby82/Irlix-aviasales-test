@@ -2,6 +2,7 @@ import TicketInfo from "./TicketInfo";
 
 import { ticketInfoWrap } from "../utils/bem";
 import '../css/ticket-info-wrap.css'
+import timeFlight from "../utils/timeFlight";
 
 const TicketInfoWrap = ({ segment }) => {
     const formatter = new Intl.DateTimeFormat("ru", {
@@ -12,9 +13,7 @@ const TicketInfoWrap = ({ segment }) => {
     const dateDeparture = new Date(segment.date);
     const dateArrival = new Date(Date.parse(segment.date) + segment.duration * 60000);
 
-    const timeFlight = Math.trunc(Math.trunc(segment.duration / 60) / 24) > 0
-        ? Math.trunc(Math.trunc(segment.duration / 60) / 24) + 'д ' + Math.trunc(segment.duration / 60) % 24 + 'ч ' + segment.duration % 60 + 'м'
-        : Math.trunc(segment.duration / 60) % 24 + 'ч ' + segment.duration % 60 + 'м';
+    
 
     const stops = segment.stops;
     let transfersCount = '';
@@ -36,7 +35,7 @@ const TicketInfoWrap = ({ segment }) => {
     return (
         <div className={ticketInfoWrap()}>
             <TicketInfo head={segment.destination + ' - ' + segment.origin} text={formatter.format(dateDeparture) + ' – ' + formatter.format(dateArrival)} />
-            <TicketInfo head='В пути' text={timeFlight} />
+            <TicketInfo head='В пути' text={timeFlight(segment)} />
             <TicketInfo head={transfersCount} text={stops.join(', ')} />
         </div>
     );
