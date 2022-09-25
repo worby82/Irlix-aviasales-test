@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/irlix-aviasales-test/static/css/main.e4b0ea8d.css",
-    "main.js": "/irlix-aviasales-test/static/js/main.4139e0b6.js",
+    "main.css": "/irlix-aviasales-test/static/css/main.7bc5ca1b.css",
+    "main.js": "/irlix-aviasales-test/static/js/main.fba7af65.js",
     "static/media/OpenSans-Regular.woff": "/irlix-aviasales-test/static/media/OpenSans-Regular.ab4f6c76f07d0b69c04a.woff",
     "static/media/OpenSans-SemiBold.woff": "/irlix-aviasales-test/static/media/OpenSans-SemiBold.a3652b52c8f58f832c2c.woff",
     "static/media/OpenSans-SemiBold.woff2": "/irlix-aviasales-test/static/media/OpenSans-SemiBold.7a744a52d45323fb2e17.woff2",
     "static/media/OpenSans-Regular.woff2": "/irlix-aviasales-test/static/media/OpenSans-Regular.4ed8dbece213f6100a9e.woff2",
     "static/media/Logo.svg": "/irlix-aviasales-test/static/media/Logo.472c04511e4ad43b5d411bb650acb7a9.svg",
     "index.html": "/irlix-aviasales-test/index.html",
-    "main.e4b0ea8d.css.map": "/irlix-aviasales-test/static/css/main.e4b0ea8d.css.map",
-    "main.4139e0b6.js.map": "/irlix-aviasales-test/static/js/main.4139e0b6.js.map"
+    "main.7bc5ca1b.css.map": "/irlix-aviasales-test/static/css/main.7bc5ca1b.css.map",
+    "main.fba7af65.js.map": "/irlix-aviasales-test/static/js/main.fba7af65.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4b0ea8d.css",
-    "static/js/main.4139e0b6.js"
+    "static/css/main.7bc5ca1b.css",
+    "static/js/main.fba7af65.js"
   ]
 }
